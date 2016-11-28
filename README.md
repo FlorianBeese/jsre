@@ -97,11 +97,13 @@ this is not needed anymore. This normaly speeds up the evaluation time with conf
 of size > 4kb down to 10% of the execution time.
 
 There are a few things you need to do to use the rule engine cache classes:
+
 1. You need to register a rule engine provider, which describes how to get the json content
 and how to configure your engine.
 Example:
-```
-RuleEngineCache.registerRuleEngineProvider(new BasicRuleEngineProvider() {
+
+  ```
+  RuleEngineCache.registerRuleEngineProvider(new BasicRuleEngineProvider() {
 
 	@Override
 	public String getConfigurationContent(String filename) throws IOException {
@@ -112,27 +114,33 @@ RuleEngineCache.registerRuleEngineProvider(new BasicRuleEngineProvider() {
 	protected void configureEngine(RuleEngine ruleEngine) {
 		//configure your rule engine here, e.g. register java actions. 
 	}
-});
-```
+  });
+  ```
+  
 2. You need to use the rule engine cache class to get (and build) the engines:
-```
-String configFile = "the file name of the configuration you would like to use."; //this is used as the key for the cache
-RuleEngine re = RuleEngineCache.get().getLockedRuleEngine(configFile);
-```
+  
+  ```
+  String configFile = "the file name of the configuration you would like to use."; //this is used as the key for the cache
+  RuleEngine re = RuleEngineCache.get().getLockedRuleEngine(configFile);
+  ```
+  
 3. You go on like in the none cache example from above:
-```
-Map<String, Object> input = new HashMap<String, Input>();	//your rule engine input data
-input.put("firstName", "John");
-re.setInput(input);
-re.executeRules();
-String output = re.getJsonDocument();
-```
+  
+  ```
+  Map<String, Object> input = new HashMap<String, Input>();	//your rule engine input data
+  input.put("firstName", "John");
+  re.setInput(input);
+  re.executeRules();
+  String output = re.getJsonDocument();
+  ```
+
 4. Last but not least you need to unlock the rule engine. This will tell the cache,
 that this specific instance is not used anymore and can be provided to other threads
 requesting a configuration with that filename.
-```
-RuleEngineCache.get().unlock(re);
-```
+
+  ```
+  RuleEngineCache.get().unlock(re);
+  ```
 
 ## Pre-, Post-Execution
 Sometimes you need to execute code before applying the rules or most likely after the rules have been applied.
