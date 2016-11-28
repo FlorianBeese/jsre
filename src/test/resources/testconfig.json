@@ -1,0 +1,125 @@
+{
+	"version" : "1.1",
+	
+	"inputValidation" : [
+		{
+			"name" : "textInput",
+			"type" : "String",
+			"mandatory" : true,
+			"expression" : "value.substr(0,4) == 'test'"
+		},
+		{
+			"name" : "input2",
+			"type" : "String",
+			"mandatory" : true
+		},
+		{
+			"name" : "inputNumber",
+			"type" : "Double",
+			"mandatory" : true
+		},
+		{
+			"name" : "optionalNumber",
+			"type" : "Integer",
+			"allowedValues" : [ 123, 456, 789 ],
+			"expression" : "value < 100 && value > 50"
+		},
+		{
+			"name" : "sphere",
+			"type" : "Double",
+			"expression" : "value > -12 && value < 10"	
+		},
+		{
+			"name" : "decimal",
+			"type" : "java.math.BigDecimal",
+			"expression" : "value > -100 && value < 100"	
+		},
+		{
+			"name" : "bool",
+			"type" : "Boolean",
+			"allowedValues" : [ true ]
+		},
+		{
+			"name" : "changingString",
+			"type" : "String",
+			"allowedValues" : [ 'hello', 'world' ]
+		},
+		{
+			"name" : "code",
+			"type" : "Code"
+		}
+	],
+	
+	"document" : {
+		"test" : false,
+		"expensive" : false,
+		"testText" : "no clue",
+		"testValue" : 5,
+		"inject" : "none"
+	},
+	
+	"rules" : [
+		{
+			"expression" : "true",
+			"description" : "I do always match",
+			"priority" : 1,
+			"scriptActions" : [
+				"document.test = true"
+			],
+			"executionActions" : [
+				"LogAction('Hello World')"
+			]
+		},
+		{
+			"expression" : "input.inputNumber > 999",
+			"priority" : 3,
+			"scriptActions" : [
+				"document.expensive = true",
+				"document.text = 'I am really expensive'",
+				"document.testValue += 7"
+			]
+		},
+		{
+			"expression" : "true",
+			"priority" : 2,
+			"scriptActions" : [
+				"document.text = 'I am the last rule to be executed and love overwriting text, but because of the priority I do not do that'"
+			]
+		},
+		{
+			"expression" : "input.textInput == input.input2",
+			"priority" : 4,
+			"scriptActions" : [
+				"document.testText = 'Wow... two input parameters have the same value ;)'"
+			]
+		},
+		{
+			"expression" : "!!document.text",
+			"description" : "if a rule sets document.text, this rule matches",
+			"priority" : 4,
+			"scriptActions" : [
+				"document.textInfo = 'Someone has set document.text'"
+			]
+		},
+		{
+			"expression" : "typeof xyz === 'function'",
+			"description" : "function xyz() was injected as code param",
+			"priority" : 4,
+			"scriptActions" : [
+				"document.inject = xyz()"
+			]
+		},
+		{
+			"expression" : "input.changingString === 'hello'",
+			"description" : "change input param value",
+			"priority" : 5,
+			"scriptActions" : [
+				"input.changingString = 'world'"
+			]
+		}
+	],
+	
+	"postExecution" : [
+		"document.testValue *= 2"
+	]
+}

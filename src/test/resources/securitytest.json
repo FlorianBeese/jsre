@@ -1,0 +1,33 @@
+{
+	"version" : "1.1",
+	
+	"inputValidation" : [
+		{
+			"name" : "textInput",
+			"type" : "String",
+			"mandatory" : true
+		}
+	],
+	
+	"document" : {
+		"test" : false,
+		"testText" : "initial",
+		"testObject" : {}
+	},
+	
+	"rules" : [
+		{
+			"expression" : "input.textInput=='exploit'",
+			"description" : "I do always match",
+			"priority" : 1,
+			"scriptActions" : [
+				"document.test = true",
+				"document.testText = java.lang.System.getProperty(\"java.home\")",
+				"document.testObject = Java.type(\"java.io.File\");"
+			],
+			"executionActions" : [
+				"LogAction('Trying to exploit the security')"
+			]
+		}
+	]
+}

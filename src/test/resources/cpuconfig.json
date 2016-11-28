@@ -1,0 +1,71 @@
+{
+	"inputValidation" : [
+		{
+			"name" : "ghzOption",
+			"type" : "Double",
+			"mandatory" : true,
+			"allowedValues" : [1.1, 1.5, 1.6, 1.67, 2.99],
+			"example" : 1.5
+		},
+		{
+			"name" : "country",
+			"type" : "String",
+			"mandatory" : true,
+			"allowedValues" : ["de", "fr", "ch", "es", "nl", "gb"],
+			"example": "de"
+		},
+		{
+			"name" : "category",
+			"type" : "String",
+			"mandatory" : true,
+			"allowedValues" : ["desktop", "notebook"],
+			"example" : "desktop"
+		}
+	],
+	"document" : {
+		"ghz" : {
+			"1.1" :	{
+				"price" : 0.0
+			},
+			"1.5" :	{
+				"price" : 10.0
+			},
+			"1.6" :	{
+				"price" : 20.0
+			},
+			"1.67" : {
+				"price" : 79.0
+			},
+			"2.99" : {
+				"price" : 139.0
+			}
+		},
+		"totalPrice" : 0.0
+	},
+	"rules" : [
+		{
+			"expression" : "input.country=='de'",
+			"description" : "Special prices for germany",
+			"priority" : 1,
+			"scriptActions" : [
+				"document.ghz['1.1'].price += 5",
+				"var d=document; d.ghz['1.5'].price += 10",
+				"document.ghz['1.6'].price += 10",
+				"document.ghz['1.67'].price += 10",
+				"document.ghz['2.99'] = {};document.ghz['2.99'].price = 999"
+			]
+		},
+		{
+			"expression" : "input.category=='notebook'",
+			"description" : "Special prices for DE",
+			"priority" : 1,
+			"scriptActions" : [
+				"document.ghz['1.67'].price += 20"
+			]
+		}
+	],
+	
+	"postExecution" : [
+		"document.totalPrice += document.ghz[input.ghzOption].price"
+	]
+}
