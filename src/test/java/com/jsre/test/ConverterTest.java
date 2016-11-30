@@ -14,7 +14,7 @@ import com.jsre.configuration.converter.JsonConverter;
 import com.jsre.configuration.converter.impl.TypedConverterProvider;
 import com.jsre.configuration.impl.BasicConfiguration;
 import com.jsre.test.configuration.model.TestDocument;
-import com.jsre.test.lib.ResourceFileHelper;
+import com.jsre.test.util.ResourceFileHelper;
 
 
 public class ConverterTest {

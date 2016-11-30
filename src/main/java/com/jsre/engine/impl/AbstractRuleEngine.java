@@ -1,16 +1,10 @@
 package com.jsre.engine.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.script.Compilable;
 import javax.script.CompiledScript;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineFactory;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.apache.commons.lang3.StringUtils;
@@ -26,21 +20,24 @@ import com.jsre.configuration.InputValidation;
 import com.jsre.configuration.Rule;
 import com.jsre.configuration.converter.JsonConverter;
 import com.jsre.configuration.converter.JsonConverterProvider;
+import com.jsre.engine.internal.scriptengine.JavaScriptEngine;
+import com.jsre.engine.internal.scriptengine.JavaScriptEngineFactory;
+import com.jsre.engine.internal.scriptengine.impl.JavaScriptEngineFactoryImpl;
 import com.jsre.exception.InputValidationException;
 import com.jsre.exception.InvalidConfigurationException;
 import com.jsre.monitoring.PerformanceMarker;
+import com.jsre.monitoring.PerformanceMarkerMgr;
 import com.jsre.monitoring.PerformanceMarkerPrinter;
+
 
 public abstract class AbstractRuleEngine implements RuleEngine {
 
 	@SuppressWarnings("rawtypes")
 	private Configuration configuration;
 	private JsonConverterProvider converterProdiver;
-	private ScriptEngine engine = null;
+	private JavaScriptEngine engine = null;
 	private HashMap<String, Action> registeredActions = new HashMap<String, Action>();
 	protected boolean performanceMonitoring = false;
-	private List<PerformanceMarker> performanceMarkers = null;
-	private long performanceTimeOffset = 0;
 	private boolean enableSecurity = false;
 
 	private CompiledScript compiledScript = null;
@@ -53,6 +50,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	protected String jsonDoc = null;
 
 	private String initialJsonDoc = null;
+	private PerformanceMarkerMgr performanceMarkerMgr;
 
 	public AbstractRuleEngine() {}
 
@@ -79,14 +77,10 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	 */
 	@Override
 	public void setJsonConfiguration(String jsonConfig) {
-		if (performanceMonitoring) {
-			setPerformanceMarker("setJsonConfiguration call");
-		}
+		setPerformanceMarker("setJsonConfiguration call");
 		this.configuration = getConfiguration(jsonConfig, this.converterProdiver);
 		afterConfigLoad();
-		if (performanceMonitoring) {
-			setPerformanceMarker("setJsonConfiguration finished");
-		}
+		setPerformanceMarker("setJsonConfiguration finished");
 	}
 
 	/*
@@ -113,62 +107,20 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 
 	// tries to get the correct engine for the java version 7 or 8
 	// and apply security to it
-	@SuppressWarnings("restriction")
-	private ScriptEngine getEngine() {
-		ScriptEngine engine = null;
-		if (!enableSecurity) {
-			if (performanceMonitoring) {
-				setPerformanceMarker("getting engine factory");
-			}
-			ScriptEngineManager manager = new ScriptEngineManager();
-			if (performanceMonitoring) {
-				setPerformanceMarker("getting engine");
-			}
-			engine = manager.getEngineByName("JavaScript");
-			return engine;
-		}
-
+	private JavaScriptEngine getEngine() {
+		JavaScriptEngineFactory factory = new JavaScriptEngineFactoryImpl();
+		factory.enableStandardSecurity(enableSecurity);
 		if (performanceMonitoring) {
-			setPerformanceMarker("getting engine factory");
+			factory.registerPerformanceMarkerMgr(performanceMarkerMgr);
 		}
-		ScriptEngineManager manager = new ScriptEngineManager();
-		ScriptEngineFactory factory = null;
-		for (ScriptEngineFactory f : manager.getEngineFactories()) {
-			if (f == null) {
-				continue;
-			}
-			if (f.getClass().getSimpleName().equals("NashornScriptEngineFactory")) {
-				factory = f;
-				break;
-			} else {
-				factory = f;
-			}
-		}
-		if (performanceMonitoring) {
-			setPerformanceMarker("getting engine");
-		}
-		if (factory instanceof jdk.nashorn.api.scripting.NashornScriptEngineFactory) {
-			jdk.nashorn.api.scripting.NashornScriptEngineFactory nashorn = (jdk.nashorn.api.scripting.NashornScriptEngineFactory) factory;
-			engine = nashorn.getScriptEngine(new SecurityClassFilter());
-		} else {
-			engine = factory.getScriptEngine();
-			// TODO unset / remove java access objects
-			// http://stackoverflow.com/questions/20793089/secure-nashorn-js-execution
-		}
-		return engine;
+		return factory.getEngine();
 	}
 
 	private void initEngine() {
 		if (engine == null) {
-			if (performanceMonitoring) {
-				setPerformanceMarker("starting engine initialization");
-			}
-
+			setPerformanceMarker("starting engine initialization");
 			engine = getEngine();
-			// engine = factory.getEngineByName("JavaScript");
-			if (performanceMonitoring) {
-				setPerformanceMarker("initializating engine");
-			}
+			setPerformanceMarker("initializating engine");
 			try {
 				engine.eval("var value=null;");
 			}
@@ -176,22 +128,16 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 				// won't happen
 				e.printStackTrace();
 			}
-			if (performanceMonitoring) {
-				setPerformanceMarker("finished engine initialization");
-			}
+			setPerformanceMarker("finished engine initialization");
 		}
 	}
 
 	private void resetEngine() {
-		if (performanceMonitoring) {
-			setPerformanceMarker("call resetEngine");
-		}
+		setPerformanceMarker("call resetEngine");
 		initEngine();
 
 		resetDocument();
-		if (performanceMonitoring) {
-			setPerformanceMarker("finished resetEngine");
-		}
+		setPerformanceMarker("finished resetEngine");
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -241,7 +187,8 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 					}
 				}
 				sAllowedValues += "]";
-			} else {
+			}
+			else {
 				sAllowedValues = allowedValues.toString();
 			}
 			throw new InputValidationException("The value '" + value + "' of parameter '" + name + "' is not allowed. Allowed values are: " + sAllowedValues);
@@ -259,7 +206,8 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 		String varSet = "";
 		if (type == String.class) {
 			varSet = "value='" + escapeStringValue((String) value) + "';";
-		} else {
+		}
+		else {
 			varSet = "value=" + value + ";";
 		}
 		Boolean valid = null;
@@ -325,7 +273,8 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 					//@formatter:on
 				}
 				checkForType(iv, name, data, t);
-			} else {
+			}
+			else {
 				//@formatter:off
 				throw new InvalidConfigurationException(
 					"the type '" + type + "' found at input param definition '" + name + 
@@ -344,9 +293,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	@Override
 	public void setInputStrings(Map<String, String> input) throws InputValidationException {
 		this.input = input;
-		if (performanceMonitoring) {
-			setPerformanceMarker("convert input");
-		}
+		setPerformanceMarker("convert input");
 		Map<String, Object> convertedData = new HashMap<String, Object>();
 
 		@SuppressWarnings("unchecked")
@@ -411,9 +358,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	@Override
 	public void setInput(Map<String, Object> input) throws InputValidationException {
 		this.input = input;
-		if (performanceMonitoring) {
-			setPerformanceMarker("setInput call");
-		}
+		setPerformanceMarker("setInput call");
 		resetEngine();
 		@SuppressWarnings("unchecked")
 		List<? extends InputValidation> inputValidations = configuration.getInputValidations();
@@ -427,25 +372,21 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 				throw new InvalidConfigurationException("Encountered empty input parameter definition. Got a comma after the last object in the json file?");
 			}
 			String name = iv.getName();
-			if (performanceMonitoring) {
-				setPerformanceMarker("setInput analyzing '" + name + "'");
-			}
+			setPerformanceMarker("setInput analyzing '" + name + "'");
 			if (input.containsKey(name)) {
 				Object data = input.get(name);
 				checkInput(iv, name, data);
-			} else {
+			}
+			else {
 				if (iv.isMandatory() != null && iv.isMandatory()) {
 					throw new InputValidationException("Mandatory parameter '" + name + "' is missing");
 				}
 			}
 		}
-		if (performanceMonitoring) {
-			setPerformanceMarker("setInput MAP");
-			engine.put("input", input);
-		}
-		if (performanceMonitoring) {
-			setPerformanceMarker("setInput done");
-		}
+		// TODO: check, if this is still needed...
+		setPerformanceMarker("setInput MAP");
+		// engine.put("input", input);
+		setPerformanceMarker("setInput done");
 	}
 
 	private String appendSemicolonIfMissing(String action) {
@@ -546,19 +487,18 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 			}
 			// TODO: Just strings work right now, fix this?!
 			return accessScript + ".execute('" + param + "')";
-		} else if (execAction instanceof SimpleAction) {
+		}
+		else if (execAction instanceof SimpleAction) {
 			return accessScript + ".execute()";
-		} else {
+		}
+		else {
 			throw new InvalidConfigurationException("Encountered an unknown type of action...");
 		}
 	}
 
 	public CompiledScript getCompiledScript() throws ScriptException {
 		if (compiledScript == null) {
-			String script = getScript();
-			final Compilable compilable = (Compilable) engine;
-			compiledScript = compilable.compile(script);
-			compiledScript.eval();
+			compiledScript = engine.getCompiledScript(getScript());
 		}
 		return compiledScript;
 	}
@@ -570,9 +510,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	 */
 	@Override
 	public void executeRules() throws ScriptException {
-		if (performanceMonitoring) {
-			setPerformanceMarker("executeRules call");
-		}
+		setPerformanceMarker("executeRules call");
 		if (engine == null) {
 			// TODO: log warning - not initialized
 			initEngine();
@@ -581,10 +519,9 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 		// compiles the script first time
 		getCompiledScript();
 
-		final Invocable invocable = (Invocable) engine;
 		try {
 			JsMapWrapper wrapper = new JsMapWrapper(input);
-			Object object = invocable.invokeFunction("executeScript", wrapper, registeredActions);
+			Object object = engine.invokeFunction("executeScript", wrapper, registeredActions);
 			jsonDoc = (String) object;
 		}
 		catch (NoSuchMethodException e) {
@@ -645,8 +582,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	@Override
 	public void enablePerformanceMonitoring() {
 		this.performanceMonitoring = true;
-		this.performanceTimeOffset = System.nanoTime();
-		this.performanceMarkers = new ArrayList<PerformanceMarker>();
+		this.performanceMarkerMgr = new PerformanceMarkerMgr();
 	}
 
 	@Override
@@ -666,18 +602,23 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 
 	@Override
 	public List<PerformanceMarker> getPerformanceMonitoring() {
-		return performanceMarkers;
+		if (performanceMarkerMgr == null) {
+			return null;
+		}
+		return performanceMarkerMgr.getPerformanceMarkers();
 	}
 
 	@Override
 	public void printPerformanceMonitoring() {
 		PerformanceMarkerPrinter printer = new PerformanceMarkerPrinter();
-		printer.printList(performanceMarkers);
+		printer.printList(getPerformanceMonitoring());
 	}
 
-	protected void setPerformanceMarker(String marker) {
-		long nanoTime = System.nanoTime();
-		performanceMarkers.add(new PerformanceMarker(marker, nanoTime - performanceTimeOffset));
+	// compiler should inline this method
+	private final void setPerformanceMarker(final String marker) {
+		if (performanceMonitoring) {
+			performanceMarkerMgr.addMarker(marker);
+		}
 	}
 
 	protected void resetDocument() {

@@ -10,8 +10,8 @@ import com.jsre.RuleEngine;
 import com.jsre.builder.RuleEngineFactory;
 import com.jsre.exception.InputValidationException;
 import com.jsre.test.actions.LogAction;
-import com.jsre.test.lib.InputHelper;
-import com.jsre.test.lib.ResourceFileHelper;
+import com.jsre.test.util.InputHelper;
+import com.jsre.test.util.ResourceFileHelper;
 
 
 public class PerformanceMonitoringTest {

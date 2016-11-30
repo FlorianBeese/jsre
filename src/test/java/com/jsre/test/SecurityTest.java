@@ -9,8 +9,8 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.jsre.RuleEngine;
-import com.jsre.test.lib.ExecutionHelper;
-import com.jsre.test.lib.TestHelper;
+import com.jsre.test.util.ExecutionHelper;
+import com.jsre.test.util.TestHelper;
 
 
 public class SecurityTest {

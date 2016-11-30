@@ -31,10 +31,10 @@ import com.jsre.configuration.converter.impl.BasicConverterProvider;
 import com.jsre.configuration.impl.BasicConfiguration;
 import com.jsre.configuration.impl.BasicDocument;
 import com.jsre.test.configuration.model.TestDocument;
-import com.jsre.test.lib.ExecutionHelper;
-import com.jsre.test.lib.InputHelper;
-import com.jsre.test.lib.ResourceFileHelper;
-import com.jsre.test.lib.TestHelper;
+import com.jsre.test.util.ExecutionHelper;
+import com.jsre.test.util.InputHelper;
+import com.jsre.test.util.ResourceFileHelper;
+import com.jsre.test.util.TestHelper;
 
 
 public class RuleEngineTest {

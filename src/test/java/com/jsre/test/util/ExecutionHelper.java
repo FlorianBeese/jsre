@@ -1,4 +1,4 @@
-package com.jsre.test.lib;
+package com.jsre.test.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

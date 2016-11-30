@@ -16,9 +16,9 @@ import com.jsre.cache.BasicRuleEngineProvider;
 import com.jsre.cache.RuleEngineCache;
 import com.jsre.exception.InputValidationException;
 import com.jsre.test.actions.LogAction;
-import com.jsre.test.lib.ExecutionHelper;
-import com.jsre.test.lib.InputHelper;
-import com.jsre.test.lib.ResourceFileHelper;
+import com.jsre.test.util.ExecutionHelper;
+import com.jsre.test.util.InputHelper;
+import com.jsre.test.util.ResourceFileHelper;
 
 public class CacheTest {
 

@@ -1,4 +1,4 @@
-package com.jsre.test.lib;
+package com.jsre.test.util;
 
 import java.util.HashMap;
 import java.util.Map;

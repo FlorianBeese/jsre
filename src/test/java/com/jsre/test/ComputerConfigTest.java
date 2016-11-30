@@ -14,9 +14,9 @@ import com.jsre.builder.RuleEngineBuilder;
 import com.jsre.exception.InputValidationException;
 import com.jsre.test.configuration.model.ComputerConverterProvider;
 import com.jsre.test.configuration.model.ComputerDocument;
-import com.jsre.test.lib.ExecutionHelper;
-import com.jsre.test.lib.InputHelper;
-import com.jsre.test.lib.ResourceFileHelper;
+import com.jsre.test.util.ExecutionHelper;
+import com.jsre.test.util.InputHelper;
+import com.jsre.test.util.ResourceFileHelper;
 
 
 public class ComputerConfigTest {
