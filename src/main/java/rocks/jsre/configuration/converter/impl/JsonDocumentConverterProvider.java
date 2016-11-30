@@ -1,4 +1,4 @@
-package com.jsre.configuration.converter.impl;
+package rocks.jsre.configuration.converter.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -12,12 +12,13 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.configuration.impl.BasicConfiguration;
-import com.jsre.configuration.impl.BasicDocument;
+
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.configuration.impl.BasicConfiguration;
+import rocks.jsre.configuration.impl.BasicDocument;
 
 
 public class JsonDocumentConverterProvider implements JsonConverterProvider {

@@ -1,6 +1,6 @@
-package com.jsre.configuration.impl;
+package rocks.jsre.configuration.impl;
 
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Document;
 
 
 public class BasicDocument implements Document {

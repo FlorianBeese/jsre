@@ -1,4 +1,4 @@
-package com.jsre.configuration;
+package rocks.jsre.configuration;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package com.jsre.configuration.impl;
+package rocks.jsre.configuration.impl;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.InputValidation;
-import com.jsre.configuration.Rule;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.InputValidation;
+import rocks.jsre.configuration.Rule;
 
 
 public class BasicConfiguration<TDoc extends Document> implements Configuration<TDoc> {

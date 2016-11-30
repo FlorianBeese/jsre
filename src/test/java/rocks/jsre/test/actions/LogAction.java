@@ -1,7 +1,7 @@
-package com.jsre.test.actions;
+package rocks.jsre.test.actions;
 
-import com.jsre.action.ParameterizedAction;
-import com.jsre.test.RuleEngineTest;
+import rocks.jsre.action.ParameterizedAction;
+import rocks.jsre.test.RuleEngineTest;
 
 
 public class LogAction implements ParameterizedAction<String> {

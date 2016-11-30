@@ -1,8 +1,8 @@
-package com.jsre.engine.impl;
+package rocks.jsre.engine.impl;
 
-import com.jsre.TypedRuleEngine;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.converter.JsonConverter;
 
 
 public class DocumentRuleEngine extends AbstractRuleEngine implements TypedRuleEngine<Document> {

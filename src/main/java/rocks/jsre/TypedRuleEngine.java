@@ -1,6 +1,6 @@
-package com.jsre;
+package rocks.jsre;
 
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Document;
 
 
 /**
@@ -19,7 +19,7 @@ public interface TypedRuleEngine<TDoc extends Document> extends RuleEngine {
 	/**
 	 * Returns the deserialized document of the engine.
 	 * 
-	 * @see com.jsre.RuleEngine#getJsonDocument()
+	 * @see rocks.jsre.RuleEngine#getJsonDocument()
 	 * @return TDoc the deserialized json document of the engine.
 	 */
 	public TDoc getDocument();

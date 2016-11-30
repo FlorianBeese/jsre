@@ -1,4 +1,4 @@
-package com.jsre.engine.impl;
+package rocks.jsre.engine.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,23 +11,24 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jsre.RuleEngine;
-import com.jsre.action.Action;
-import com.jsre.action.ParameterizedAction;
-import com.jsre.action.SimpleAction;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.InputValidation;
-import com.jsre.configuration.Rule;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.engine.internal.scriptengine.JavaScriptEngine;
-import com.jsre.engine.internal.scriptengine.JavaScriptEngineFactory;
-import com.jsre.engine.internal.scriptengine.impl.JavaScriptEngineFactoryImpl;
-import com.jsre.exception.InputValidationException;
-import com.jsre.exception.InvalidConfigurationException;
-import com.jsre.monitoring.PerformanceMarker;
-import com.jsre.monitoring.PerformanceMarkerMgr;
-import com.jsre.monitoring.PerformanceMarkerPrinter;
+
+import rocks.jsre.RuleEngine;
+import rocks.jsre.action.Action;
+import rocks.jsre.action.ParameterizedAction;
+import rocks.jsre.action.SimpleAction;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.InputValidation;
+import rocks.jsre.configuration.Rule;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.engine.internal.scriptengine.JavaScriptEngine;
+import rocks.jsre.engine.internal.scriptengine.JavaScriptEngineFactory;
+import rocks.jsre.engine.internal.scriptengine.impl.JavaScriptEngineFactoryImpl;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.exception.InvalidConfigurationException;
+import rocks.jsre.monitoring.PerformanceMarker;
+import rocks.jsre.monitoring.PerformanceMarkerMgr;
+import rocks.jsre.monitoring.PerformanceMarkerPrinter;
 
 
 public abstract class AbstractRuleEngine implements RuleEngine {

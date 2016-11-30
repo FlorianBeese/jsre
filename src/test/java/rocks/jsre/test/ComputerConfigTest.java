@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -9,14 +9,14 @@ import javax.script.ScriptException;
 
 import org.junit.Test;
 
-import com.jsre.TypedRuleEngine;
-import com.jsre.builder.RuleEngineBuilder;
-import com.jsre.exception.InputValidationException;
-import com.jsre.test.configuration.model.ComputerConverterProvider;
-import com.jsre.test.configuration.model.ComputerDocument;
-import com.jsre.test.util.ExecutionHelper;
-import com.jsre.test.util.InputHelper;
-import com.jsre.test.util.ResourceFileHelper;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.builder.RuleEngineBuilder;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.test.configuration.model.ComputerConverterProvider;
+import rocks.jsre.test.configuration.model.ComputerDocument;
+import rocks.jsre.test.util.ExecutionHelper;
+import rocks.jsre.test.util.InputHelper;
+import rocks.jsre.test.util.ResourceFileHelper;
 
 
 public class ComputerConfigTest {

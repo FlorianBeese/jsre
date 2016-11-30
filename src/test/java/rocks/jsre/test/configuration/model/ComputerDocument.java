@@ -1,9 +1,9 @@
-package com.jsre.test.configuration.model;
+package rocks.jsre.test.configuration.model;
 
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Document;
 
 
 public class ComputerDocument implements Document {

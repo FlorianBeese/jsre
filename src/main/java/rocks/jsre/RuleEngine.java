@@ -1,15 +1,15 @@
-package com.jsre;
+package rocks.jsre;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.script.ScriptException;
 
-import com.jsre.action.Action;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.exception.InputValidationException;
-import com.jsre.monitoring.PerformanceMarker;
+import rocks.jsre.action.Action;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.monitoring.PerformanceMarker;
 
 /**
  * Interface for the JSRE RuleEngine.

@@ -1,4 +1,4 @@
-package com.jsre.cache;
+package rocks.jsre.cache;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,8 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 import com.google.common.collect.ImmutableMap;
-import com.jsre.RuleEngine;
-import com.jsre.configuration.Configuration;
+
+import rocks.jsre.RuleEngine;
+import rocks.jsre.configuration.Configuration;
 
 /**
  * <pre>
@@ -104,7 +105,7 @@ public class RuleEngineCache {
 	 * Unlocks the ruleEngine object. The cache will then use this object again,
 	 * to deliver it when calling getLockedRuleEngine().
 	 * 
-	 * @see com.jsre.cache.RuleEngineCache#getLockedRuleEngine(String key)
+	 * @see rocks.jsre.cache.RuleEngineCache#getLockedRuleEngine(String key)
 	 * 
 	 * @param ruleEngine The ruleEngine object to be unlocked.
 	 */

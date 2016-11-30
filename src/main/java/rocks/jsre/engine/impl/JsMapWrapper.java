@@ -1,4 +1,4 @@
-package com.jsre.engine.impl;
+package rocks.jsre.engine.impl;
 
 import java.util.Collection;
 import java.util.Map;

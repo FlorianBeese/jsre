@@ -1,4 +1,4 @@
-package com.jsre.monitoring;
+package rocks.jsre.monitoring;
 
 public class PerformanceMarker {
 

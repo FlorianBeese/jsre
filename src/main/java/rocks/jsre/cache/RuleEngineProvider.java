@@ -1,9 +1,9 @@
-package com.jsre.cache;
+package rocks.jsre.cache;
 
 import java.io.IOException;
 
-import com.jsre.RuleEngine;
-import com.jsre.configuration.Configuration;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.configuration.Configuration;
 
 public interface RuleEngineProvider {
 

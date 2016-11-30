@@ -1,8 +1,8 @@
-package com.jsre.configuration.impl;
+package rocks.jsre.configuration.impl;
 
 import java.util.List;
 
-import com.jsre.configuration.Rule;
+import rocks.jsre.configuration.Rule;
 
 public class BasicRule implements Rule {
 

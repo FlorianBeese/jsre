@@ -1,6 +1,6 @@
-package com.jsre.engine.internal.scriptengine;
+package rocks.jsre.engine.internal.scriptengine;
 
-import com.jsre.monitoring.PerformanceMarkerMgr;
+import rocks.jsre.monitoring.PerformanceMarkerMgr;
 
 
 public interface JavaScriptEngineFactory {

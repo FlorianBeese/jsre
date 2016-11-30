@@ -1,4 +1,4 @@
-package com.jsre.cache;
+package rocks.jsre.cache;
 
 public class CacheStatistic {
 

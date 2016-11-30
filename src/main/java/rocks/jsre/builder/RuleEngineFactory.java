@@ -1,8 +1,8 @@
-package com.jsre.builder;
+package rocks.jsre.builder;
 
-import com.jsre.RuleEngine;
-import com.jsre.TypedRuleEngine;
-import com.jsre.configuration.Document;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.configuration.Document;
 
 
 public class RuleEngineFactory {

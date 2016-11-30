@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -16,7 +16,7 @@ import javax.script.ScriptException;
 
 import org.junit.Test;
 
-import com.jsre.engine.impl.JsMapWrapper;
+import rocks.jsre.engine.impl.JsMapWrapper;
 
 public class WrapperTest {
 

@@ -1,4 +1,4 @@
-package com.jsre.configuration.converter;
+package rocks.jsre.configuration.converter;
 
 
 public interface JsonConverter<T> {

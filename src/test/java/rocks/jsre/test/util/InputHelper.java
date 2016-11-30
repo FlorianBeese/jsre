@@ -1,4 +1,4 @@
-package com.jsre.test.util;
+package rocks.jsre.test.util;
 
 import java.util.HashMap;
 import java.util.Map;

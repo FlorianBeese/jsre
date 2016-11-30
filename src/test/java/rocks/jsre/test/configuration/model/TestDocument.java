@@ -1,6 +1,6 @@
-package com.jsre.test.configuration.model;
+package rocks.jsre.test.configuration.model;
 
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Document;
 
 
 public class TestDocument implements Document {

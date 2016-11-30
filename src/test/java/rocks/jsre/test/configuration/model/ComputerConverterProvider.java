@@ -1,14 +1,15 @@
-package com.jsre.test.configuration.model;
+package rocks.jsre.test.configuration.model;
 
 import java.lang.reflect.Type;
 
 import com.google.gson.reflect.TypeToken;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.configuration.converter.impl.JsonHelper;
-import com.jsre.configuration.impl.BasicConfiguration;
+
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.configuration.converter.impl.JsonHelper;
+import rocks.jsre.configuration.impl.BasicConfiguration;
 
 
 public class ComputerConverterProvider implements JsonConverterProvider {

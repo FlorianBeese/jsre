@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import java.util.Map;
 
@@ -6,12 +6,12 @@ import javax.script.ScriptException;
 
 import org.junit.Test;
 
-import com.jsre.RuleEngine;
-import com.jsre.builder.RuleEngineFactory;
-import com.jsre.exception.InputValidationException;
-import com.jsre.test.actions.LogAction;
-import com.jsre.test.util.InputHelper;
-import com.jsre.test.util.ResourceFileHelper;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.builder.RuleEngineFactory;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.test.actions.LogAction;
+import rocks.jsre.test.util.InputHelper;
+import rocks.jsre.test.util.ResourceFileHelper;
 
 
 public class PerformanceMonitoringTest {

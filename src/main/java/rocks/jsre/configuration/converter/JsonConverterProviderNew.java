@@ -1,7 +1,7 @@
-package com.jsre.configuration.converter;
+package rocks.jsre.configuration.converter;
 
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
 
 
 // TODO change interface to this one

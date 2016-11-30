@@ -1,4 +1,4 @@
-package com.jsre.test.configuration.model;
+package rocks.jsre.test.configuration.model;
 
 public class GHz {
 

@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,14 +11,14 @@ import javax.script.ScriptException;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.jsre.RuleEngine;
-import com.jsre.cache.BasicRuleEngineProvider;
-import com.jsre.cache.RuleEngineCache;
-import com.jsre.exception.InputValidationException;
-import com.jsre.test.actions.LogAction;
-import com.jsre.test.util.ExecutionHelper;
-import com.jsre.test.util.InputHelper;
-import com.jsre.test.util.ResourceFileHelper;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.cache.BasicRuleEngineProvider;
+import rocks.jsre.cache.RuleEngineCache;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.test.actions.LogAction;
+import rocks.jsre.test.util.ExecutionHelper;
+import rocks.jsre.test.util.InputHelper;
+import rocks.jsre.test.util.ResourceFileHelper;
 
 public class CacheTest {
 

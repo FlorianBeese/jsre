@@ -1,4 +1,4 @@
-package com.jsre.test.util;
+package rocks.jsre.test.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,11 +9,11 @@ import java.util.Map;
 
 import javax.script.ScriptException;
 
-import com.jsre.RuleEngine;
-import com.jsre.TypedRuleEngine;
-import com.jsre.exception.InputValidationException;
-import com.jsre.test.configuration.model.ComputerDocument;
-import com.jsre.test.configuration.model.TestDocument;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.exception.InputValidationException;
+import rocks.jsre.test.configuration.model.ComputerDocument;
+import rocks.jsre.test.configuration.model.TestDocument;
 
 
 public class ExecutionHelper {

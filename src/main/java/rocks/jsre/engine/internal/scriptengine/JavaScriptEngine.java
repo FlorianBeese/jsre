@@ -1,4 +1,4 @@
-package com.jsre.engine.internal.scriptengine;
+package rocks.jsre.engine.internal.scriptengine;
 
 import java.util.Map;
 

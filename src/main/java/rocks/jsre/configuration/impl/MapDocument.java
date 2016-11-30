@@ -1,8 +1,8 @@
-package com.jsre.configuration.impl;
+package rocks.jsre.configuration.impl;
 
 import java.util.HashMap;
 
-import com.jsre.configuration.Document;
+import rocks.jsre.configuration.Document;
 
 
 public class MapDocument extends HashMap<String, Object> implements Document {

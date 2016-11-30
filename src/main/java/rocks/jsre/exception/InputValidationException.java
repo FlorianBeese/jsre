@@ -1,4 +1,4 @@
-package com.jsre.exception;
+package rocks.jsre.exception;
 
 /**
  * An InputValidationException occurs, when setting the input of the API.

@@ -1,4 +1,4 @@
-package com.jsre.test.util;
+package rocks.jsre.test.util;
 
 import java.io.IOException;
 import java.io.InputStream;

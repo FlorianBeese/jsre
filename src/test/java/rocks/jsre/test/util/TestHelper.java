@@ -1,12 +1,12 @@
-package com.jsre.test.util;
+package rocks.jsre.test.util;
 
-import com.jsre.RuleEngine;
-import com.jsre.TypedRuleEngine;
-import com.jsre.builder.RuleEngineFactory;
-import com.jsre.configuration.Document;
-import com.jsre.test.actions.LogAction;
-import com.jsre.test.configuration.model.ComputerDocument;
-import com.jsre.test.configuration.model.TestDocument;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.builder.RuleEngineFactory;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.test.actions.LogAction;
+import rocks.jsre.test.configuration.model.ComputerDocument;
+import rocks.jsre.test.configuration.model.TestDocument;
 
 
 public class TestHelper {

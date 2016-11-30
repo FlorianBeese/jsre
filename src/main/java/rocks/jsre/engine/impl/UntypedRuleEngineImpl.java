@@ -1,6 +1,6 @@
-package com.jsre.engine.impl;
+package rocks.jsre.engine.impl;
 
-import com.jsre.RuleEngine;
+import rocks.jsre.RuleEngine;
 
 
 public class UntypedRuleEngineImpl extends AbstractRuleEngine implements RuleEngine {

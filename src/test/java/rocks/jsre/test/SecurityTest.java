@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -8,9 +8,9 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.jsre.RuleEngine;
-import com.jsre.test.util.ExecutionHelper;
-import com.jsre.test.util.TestHelper;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.test.util.ExecutionHelper;
+import rocks.jsre.test.util.TestHelper;
 
 
 public class SecurityTest {

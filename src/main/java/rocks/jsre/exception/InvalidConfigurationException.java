@@ -1,4 +1,4 @@
-package com.jsre.exception;
+package rocks.jsre.exception;
 
 /**
  * An InvalidConfiguationException can occur any time, when using the rule

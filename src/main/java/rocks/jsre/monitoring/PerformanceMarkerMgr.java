@@ -1,4 +1,4 @@
-package com.jsre.monitoring;
+package rocks.jsre.monitoring;
 
 import java.util.ArrayList;
 import java.util.List;

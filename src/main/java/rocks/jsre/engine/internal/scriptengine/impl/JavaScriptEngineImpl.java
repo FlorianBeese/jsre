@@ -1,4 +1,4 @@
-package com.jsre.engine.internal.scriptengine.impl;
+package rocks.jsre.engine.internal.scriptengine.impl;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import com.jsre.engine.internal.scriptengine.JavaScriptEngine;
+import rocks.jsre.engine.internal.scriptengine.JavaScriptEngine;
 
 
 public class JavaScriptEngineImpl implements JavaScriptEngine {

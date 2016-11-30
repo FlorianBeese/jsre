@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -8,13 +8,13 @@ import java.lang.reflect.ParameterizedType;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.junit.Test;
 
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.impl.TypedConverterProvider;
-import com.jsre.configuration.impl.BasicConfiguration;
-import com.jsre.test.configuration.model.TestDocument;
-import com.jsre.test.util.ResourceFileHelper;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.impl.TypedConverterProvider;
+import rocks.jsre.configuration.impl.BasicConfiguration;
+import rocks.jsre.test.configuration.model.TestDocument;
+import rocks.jsre.test.util.ResourceFileHelper;
 
 
 public class ConverterTest {

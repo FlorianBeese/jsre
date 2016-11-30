@@ -1,8 +1,8 @@
-package com.jsre.configuration.impl;
+package rocks.jsre.configuration.impl;
 
 import java.util.List;
 
-import com.jsre.configuration.InputValidation;
+import rocks.jsre.configuration.InputValidation;
 
 
 public class BasicInputValidation implements InputValidation {

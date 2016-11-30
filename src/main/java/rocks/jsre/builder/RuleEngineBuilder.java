@@ -1,4 +1,4 @@
-package com.jsre.builder;
+package rocks.jsre.builder;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
@@ -6,17 +6,17 @@ import java.util.Map;
 
 import org.apache.commons.lang3.reflect.TypeUtils;
 
-import com.jsre.RuleEngine;
-import com.jsre.TypedRuleEngine;
-import com.jsre.action.Action;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.Document;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.configuration.converter.impl.JsonDocumentConverterProvider;
-import com.jsre.configuration.converter.impl.TypedConverterProvider;
-import com.jsre.configuration.impl.BasicConfiguration;
-import com.jsre.engine.impl.TypedRuleEngineImpl;
-import com.jsre.engine.impl.UntypedRuleEngineImpl;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.action.Action;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.Document;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.configuration.converter.impl.JsonDocumentConverterProvider;
+import rocks.jsre.configuration.converter.impl.TypedConverterProvider;
+import rocks.jsre.configuration.impl.BasicConfiguration;
+import rocks.jsre.engine.impl.TypedRuleEngineImpl;
+import rocks.jsre.engine.impl.UntypedRuleEngineImpl;
 
 
 public class RuleEngineBuilder {

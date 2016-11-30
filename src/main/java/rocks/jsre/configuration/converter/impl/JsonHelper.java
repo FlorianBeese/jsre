@@ -1,4 +1,4 @@
-package com.jsre.configuration.converter.impl;
+package rocks.jsre.configuration.converter.impl;
 
 import java.lang.reflect.Type;
 

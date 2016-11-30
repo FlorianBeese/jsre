@@ -1,13 +1,13 @@
-package com.jsre.cache;
+package rocks.jsre.cache;
 
 import java.io.IOException;
 
-import com.jsre.RuleEngine;
-import com.jsre.builder.RuleEngineBuilder;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.configuration.converter.impl.JsonDocumentConverterProvider;
+import rocks.jsre.RuleEngine;
+import rocks.jsre.builder.RuleEngineBuilder;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.configuration.converter.impl.JsonDocumentConverterProvider;
 
 public abstract class BasicRuleEngineProvider implements RuleEngineProvider {
 

@@ -1,4 +1,4 @@
-package com.jsre.test;
+package rocks.jsre.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -22,19 +22,20 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.jsre.RuleEngine;
-import com.jsre.TypedRuleEngine;
-import com.jsre.configuration.Configuration;
-import com.jsre.configuration.converter.JsonConverter;
-import com.jsre.configuration.converter.JsonConverterProvider;
-import com.jsre.configuration.converter.impl.BasicConverterProvider;
-import com.jsre.configuration.impl.BasicConfiguration;
-import com.jsre.configuration.impl.BasicDocument;
-import com.jsre.test.configuration.model.TestDocument;
-import com.jsre.test.util.ExecutionHelper;
-import com.jsre.test.util.InputHelper;
-import com.jsre.test.util.ResourceFileHelper;
-import com.jsre.test.util.TestHelper;
+
+import rocks.jsre.RuleEngine;
+import rocks.jsre.TypedRuleEngine;
+import rocks.jsre.configuration.Configuration;
+import rocks.jsre.configuration.converter.JsonConverter;
+import rocks.jsre.configuration.converter.JsonConverterProvider;
+import rocks.jsre.configuration.converter.impl.BasicConverterProvider;
+import rocks.jsre.configuration.impl.BasicConfiguration;
+import rocks.jsre.configuration.impl.BasicDocument;
+import rocks.jsre.test.configuration.model.TestDocument;
+import rocks.jsre.test.util.ExecutionHelper;
+import rocks.jsre.test.util.InputHelper;
+import rocks.jsre.test.util.ResourceFileHelper;
+import rocks.jsre.test.util.TestHelper;
 
 
 public class RuleEngineTest {
