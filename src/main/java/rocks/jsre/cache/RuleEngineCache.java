@@ -73,6 +73,9 @@ public class RuleEngineCache {
 	 * 
 	 * @see #unlock(RuleEngine)
 	 * 
+	 * @throws IOException in case the configured RuleEngineProvider encounters
+	 * an IOException while loading the configuring for a new created rule engine
+	 * 
 	 * @param key The key in the cache - normally the configuration file name.
 	 * @return a RuleEngine instance, that was built using the registered
 	 *         RuleEngineProvider or was retrieved from the cache
