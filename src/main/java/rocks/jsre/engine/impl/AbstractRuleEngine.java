@@ -149,7 +149,7 @@ public abstract class AbstractRuleEngine implements RuleEngine {
 	}
 
 	private Integer doubleToInteger(Object oDouble) {
-		return new Integer(((Double) oDouble).intValue());
+		return ((Double)oDouble).intValue();
 	}
 
 	@SuppressWarnings("unchecked")

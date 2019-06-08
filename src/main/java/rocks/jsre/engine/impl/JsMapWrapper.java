@@ -4,8 +4,14 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+import javax.script.ScriptException;
+
 import jdk.nashorn.api.scripting.AbstractJSObject;
-import jdk.nashorn.internal.runtime.ScriptRuntime;
+import jdk.nashorn.api.scripting.ScriptObjectMirror;
+import rocks.jsre.engine.internal.scriptengine.JavaScriptEngine;
+//import jdk.nashorn.internal.runtime.ScriptRuntime;
+import rocks.jsre.engine.internal.scriptengine.JavaScriptEngineFactory;
+import rocks.jsre.engine.internal.scriptengine.impl.JavaScriptEngineFactoryImpl;
 
 @SuppressWarnings("restriction")
 public class JsMapWrapper extends AbstractJSObject {
@@ -35,10 +41,29 @@ public class JsMapWrapper extends AbstractJSObject {
 		return super.eval(s);
 	}
 
+	private static Object getUndefinedValue() {
+		JavaScriptEngineFactory factory = new JavaScriptEngineFactoryImpl();
+		factory.enableStandardSecurity(false);
+		JavaScriptEngine jsengine = factory.getEngine();
+		
+		Object undefined = null;
+		
+		try {
+		    ScriptObjectMirror arrayMirror = (ScriptObjectMirror) jsengine.eval("[undefined]");
+		    return arrayMirror.getSlot(0);
+		} catch (ScriptException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@Override
 	public Object getMember(String name) {
 		if (!wrappedMap.containsKey(name)) {
-			return ScriptRuntime.UNDEFINED;
+			Object undefined = getUndefinedValue();
+			return undefined;
+			//return ScriptRuntime.UNDEFINED;
 		}
 		return wrappedMap.get(name);
 	}
