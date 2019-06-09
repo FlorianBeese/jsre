@@ -188,8 +188,9 @@ public class CacheTest {
 		}
 		//TODO: the comparison value should be set by the environment 
 		//and if not set the test should be ignored
-		assertTrue(max < 12); // 12ms on core i7@3GHz
-		assertTrue(total < 72); // 75ms on core i7@3GHz
+		//since compiler and runtime version greater 8 (cur: 12.0.1) these values are quite unstable...
+		assertTrue("maximum runtime should be less than 25ms, but was " + max + "ms", max < 25); // java8: 12ms on core i7@3GHz
+		assertTrue("total runtime should be less than 90ms, but was " + total + "ms", total < 90); // java8: 75ms on core i7@3GHz
 	}
 
 }
